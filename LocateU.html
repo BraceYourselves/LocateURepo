@@ -75,9 +75,10 @@ function initialize() {
 
   });
 
+ 
   var defaultBounds = new google.maps.LatLngBounds(
-      new google.maps.LatLng(-33.8902, 151.1759),
-      new google.maps.LatLng(-33.8474, 151.2631));
+      new google.maps.LatLng(49.1236, 9.197),
+      new google.maps.LatLng(49.1236, 9.197));
   map.fitBounds(defaultBounds);
 
   // Create the search box and link it to the UI element.
@@ -167,6 +168,6 @@ google.maps.event.addDomListener(window, 'load', initialize);
 
     <div class="fluid-wrapper" id="map-canvas"></div>
 
-   <input id="pac-input" class="controls" type="text" placeholder="Search Box">
+   <input id="pac-input" class="controls" type="text" placeholder="Suchfeld">
   </body>
 </html>
