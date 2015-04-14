@@ -1,8 +1,14 @@
 <!DOCTYPE html>
-<html>
+<html lang="de">
   <head>
-    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
-    <meta charset="utf-8">
+   <meta charset="utf-8">
+	<meta content="width=device-width, initial-scale=1.0" name="viewport">
+	
+	<title>Willkommen</title>
+<!-- If you are using the CSS version, only link these 2 files, you may add app.css to use for your overrides if you like -->
+  <link rel="stylesheet" href="css/normalize.css">
+  <link rel="stylesheet" href="css/foundation.css">
+  <script src="js/vendor/modernizr.js"></script>
     <style>
       html, body, #map-canvas {
         height: 90%;
@@ -142,6 +148,16 @@ google.maps.event.addDomListener(window, 'load', initialize);
     </style>
   </head>
   <body>
+  
+  <button  data-dropdown="drop1"  ><img src="img/menu.png" > </button><br>
+<ul id="drop1" data-dropdown-content class="f-dropdown" aria-hidden="true" >
+  <li><a href="#">This is a link</a></li>
+  <li><a href="#">This is another</a></li>
+  <li><a href="#">Yet another</a></li>
+</ul>
+  
+
+  
 
   <script src="js/vendor/jquery.js"></script>
   <script src="js/foundation.min.js"></script>
