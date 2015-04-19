@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="de">
+  <head>
+   <meta charset="utf-8">
+	<meta content="width=device-width, initial-scale=1.0" name="viewport">
+	
+	<title>Willkommen</title>
+<!-- If you are using the CSS version, only link these 2 files, you may add app.css to use for your overrides if you like -->
+  <link rel="stylesheet" href="css/normalize.css">
+  <link rel="stylesheet" href="css/foundation.css">
+  <script src="js/vendor/modernizr.js"></script>
+    <style>	
+      html, body, #map-canvas { 		
+        height: 90%;
+        width: 99%;
+        margin: 0px;
+        padding: 10px
+      }
+      .controls {
+        margin-top: 10px;
+        border: 1px solid transparent;
+        border-radius: 2px 0 0 2px;
+        box-sizing: border-box;
+        -moz-box-sizing: border-box;
+        height: 20%;
+          width: 99%;
+        outline: none;
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+      }
+
+      #pac-input {						
+        background-color: #fff;
+        font-family: Roboto;
+        font-size: 15px;
+        font-weight: 300;
+        margin-left: 0px;
+       	margin-top: 10px;				
+        text-overflow: ellipsis;
+        width: 99%;
+      }
+
+      #pac-input:focus {
+        border-color: #4d90fe;
+      }
+
+      .pac-container {
+        font-family: Roboto;
+      }
+
+      #type-selector {
+        color: #fff;
+        background-color: #4d90fe;
+        padding: 5px 11px 0px 11px;
+      }
+
+      #type-selector label {
+        font-family: Roboto;
+        font-size: 13px;
+        font-weight: 300;
+      }
+
+    </style>
+    <title>Places search box</title>
+    <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&signed_in=true&libraries=places"></script>
+    <script>
+// This example adds a search box to a map, using the Google Place Autocomplete
+// feature. People can enter geographical searches. The search box will return a
+// pick list containing a mix of places and predicted search terms.
+
+function initialize() {
+
+  var markers = [];
+  var map = new google.maps.Map(document.getElementById('map-canvas'), {
+    mapTypeId: google.maps.MapTypeId.TERRAIN								 // Mapansicht (Sattalite, Roadmap, Terrain)
+
+  });
+
+ 
+  var defaultBounds = new google.maps.LatLngBounds(							// Default START
+      new google.maps.LatLng(49.1236, 9.197),
+      new google.maps.LatLng(49.1236, 9.197));
+  map.fitBounds(defaultBounds);
+
+  // Create the search box and link it to the UI element.
+  var input = /** @type {HTMLInputElement} */(
+      document.getElementById('pac-input'));
+  // map.controls[google.maps.ControlPosition.TOP_LEFT].push(input); 		// Position innerhalb der Map
+
+  var searchBox = new google.maps.places.SearchBox(
+    /** @type {HTMLInputElement} */(input));
+
+  // [START region_getplaces]
+  // Listen for the event fired when the user selects an item from the
+  // pick list. Retrieve the matching places for that item.
+  google.maps.event.addListener(searchBox, 'places_changed', function() {		//wie aus der englischen Doku ersichtlich ist, wird hier die Verfolstaendigungsfunktion implementiert
+    var places = searchBox.getPlaces();
+
+    if (places.length == 0) {
+      return;
+    }
+    for (var i = 0, marker; marker = markers[i]; i++) {
+      marker.setMap(null);
+    }
+
+    // For each place, get the icon, place name, and location.
+    markers = [];
+    var bounds = new google.maps.LatLngBounds();
+    for (var i = 0, place; place = places[i]; i++) {
+      var image = {
+        url: place.icon,
+        size: new google.maps.Size(71, 71),
+        origin: new google.maps.Point(0, 0),
+        anchor: new google.maps.Point(17, 34),
+        scaledSize: new google.maps.Size(25, 25)
+      };
+
+      // Create a marker for each place.
+      var marker = new google.maps.Marker({
+        map: map,
+        icon: image,
+        title: place.name,
+        position: place.geometry.location
+      });
+
+      markers.push(marker);
+
+      bounds.extend(place.geometry.location);
+    }
+
+    map.fitBounds(bounds);
+  });
+  // [END region_getplaces]
+
+  // Bias the SearchBox results towards places that are within the bounds of the
+  // current map's viewport.
+  google.maps.event.addListener(map, 'bounds_changed', function() {			// Verknuepfung mit Bias
+    var bounds = map.getBounds();
+    searchBox.setBounds(bounds);
+  });
+}
+
+google.maps.event.addDomListener(window, 'load', initialize);
+
+    </script>
+    <style>
+      #target {
+        width: 345px;
+      }
+    </style>
+  </head>
+  <body>
+  
+
+    
+  
+        
+
+<table>		
+ <div class="row" >
+	
+  <tr>
+  <div class="small-2 columns"> 
+  <button data-dropdown="drop1" class="button secondary" ><img src="img/menu.png" >					<!--// Menue -->
+	<ul id="drop1" data-dropdown-content class="f-dropdown" aria-hidden="true" >
+  <li><a href="#">This is a link</a></li>													<!--//MenueLinks -->
+  <li><a href="#">This is another</a></li>
+  <li><a href="#">Yet another</a></li>
+	</ul>
+	</tr>
+	<tr>
+	<ul class="small-2 small-offset-4 columns">
+            <img src="img/logohhn.png" > 
+	</div>
+	</tr>
+	
+
+</div>
+</table>
+  
+  
+  
+  
+
+
+
+  
+
+  <script src="js/vendor/jquery.js"></script>
+  <script src="js/foundation.min.js"></script>
+  <script>
+    $(document).foundation();
+  </script>
+
+    <div class="fluid-wrapper" id="map-canvas"></div>							<!--// Die Map -->
+
+   <input id="pac-input" class="controls" type="text" placeholder="Suchfeld">	<!--// das Suchfeld -->
+  </body>
+</html>
