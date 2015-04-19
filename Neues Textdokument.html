@@ -1,14 +1,22 @@
 <!DOCTYPE html>
-<html>
+<html lang="de">
   <head>
-    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
-    <meta charset="utf-8">
-    <style>
-      html, body, #map-canvas {
-        height: 90%;
+   <meta charset="utf-8">
+	<meta content="width=device-width, initial-scale=1.0" name="viewport">
+	
+	<title>Willkommen</title>
+<!-- If you are using the CSS version, only link these 2 files, you may add app.css to use for your overrides if you like -->
+  <link rel="stylesheet" href="css/normalize.css">
+  <link rel="stylesheet" href="css/foundation.css">
+
+  <script src="js/vendor/modernizr.js"></script>
+    <style>	
+      html, body, #map-canvas { 		
+        height: 92%;
         width: 99%;
         margin: 0px;
-        padding: 10px
+        padding: 10px;
+		
       }
       .controls {
         margin-top: 10px;
@@ -16,19 +24,19 @@
         border-radius: 2px 0 0 2px;
         box-sizing: border-box;
         -moz-box-sizing: border-box;
-        height: 20%;
-          width: 99%;
+        height: 100%;
+          width: 100%;
         outline: none;
         box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
       }
 
-      #pac-input {
+      #pac-input {						
         background-color: #fff;
         font-family: Roboto;
         font-size: 15px;
         font-weight: 300;
         margin-left: 0px;
-        padding: 10px;
+       	margin-top: 10px;				
         text-overflow: ellipsis;
         width: 99%;
       }
@@ -40,6 +48,9 @@
       .pac-container {
         font-family: Roboto;
       }
+	  .row {
+		max-width: none;
+	  }
 
       #type-selector {
         color: #fff;
@@ -65,19 +76,20 @@ function initialize() {
 
   var markers = [];
   var map = new google.maps.Map(document.getElementById('map-canvas'), {
-    mapTypeId: google.maps.MapTypeId.TERRAIN
+    mapTypeId: google.maps.MapTypeId.TERRAIN								 // Mapansicht (Sattalite, Roadmap, Terrain)
 
   });
 
-  var defaultBounds = new google.maps.LatLngBounds(
-      new google.maps.LatLng(-33.8902, 151.1759),
-      new google.maps.LatLng(-33.8474, 151.2631));
+ 
+  var defaultBounds = new google.maps.LatLngBounds(							// Default START
+      new google.maps.LatLng(49.1236, 9.197),
+      new google.maps.LatLng(49.1236, 9.197));
   map.fitBounds(defaultBounds);
 
   // Create the search box and link it to the UI element.
   var input = /** @type {HTMLInputElement} */(
       document.getElementById('pac-input'));
-  // map.controls[google.maps.ControlPosition.TOP_LEFT].push(input);
+  // map.controls[google.maps.ControlPosition.TOP_LEFT].push(input); 		// Position innerhalb der Map
 
   var searchBox = new google.maps.places.SearchBox(
     /** @type {HTMLInputElement} */(input));
@@ -85,7 +97,7 @@ function initialize() {
   // [START region_getplaces]
   // Listen for the event fired when the user selects an item from the
   // pick list. Retrieve the matching places for that item.
-  google.maps.event.addListener(searchBox, 'places_changed', function() {
+  google.maps.event.addListener(searchBox, 'places_changed', function() {		//wie aus der englischen Doku ersichtlich ist, wird hier die Verfolstaendigungsfunktion implementiert
     var places = searchBox.getPlaces();
 
     if (places.length == 0) {
@@ -126,7 +138,7 @@ function initialize() {
 
   // Bias the SearchBox results towards places that are within the bounds of the
   // current map's viewport.
-  google.maps.event.addListener(map, 'bounds_changed', function() {
+  google.maps.event.addListener(map, 'bounds_changed', function() {			// Verknuepfung mit Bias
     var bounds = map.getBounds();
     searchBox.setBounds(bounds);
   });
@@ -142,6 +154,31 @@ google.maps.event.addDomListener(window, 'load', initialize);
     </style>
   </head>
   <body>
+  
+  
+  <div class="row" >
+	
+  <div class="row" >
+  <div class="small-2 columns"> 
+ 
+  <button data-dropdown="drop1" class="button secondary" ><img src="img/menu.png" >					<!--// Menue -->
+	<ul id="drop1" data-dropdown-content class="f-dropdown" aria-hidden="true" >
+  <li><a href="#">This is a link</a></li>													<!--//MenueLinks -->
+  <li><a href="#">This is another</a></li>
+  <li><a href="#">Yet another</a></li>
+	</ul>
+	</tr>
+	</div>
+
+<div class="small-3 columns"><img src="img/logohhn.png" > </div>
+		</div>
+
+    </div>    
+
+<div  class="columns2" id="map-canvas"></div>							<!--// Die Map -->
+
+<input id="pac-input" class="controls" type="text" placeholder="Suchfeld">	<!--// das Suchfeld -->
+   </div>         
 
   <script src="js/vendor/jquery.js"></script>
   <script src="js/foundation.min.js"></script>
@@ -149,8 +186,5 @@ google.maps.event.addDomListener(window, 'load', initialize);
     $(document).foundation();
   </script>
 
-    <div class="fluid-wrapper" id="map-canvas"></div>
-
-   <input id="pac-input" class="controls" type="text" placeholder="Search Box">
   </body>
 </html>

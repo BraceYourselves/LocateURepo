@@ -1,0 +1,24 @@
+*:not(body):not(html){
+	box-sizing:border-box;
+	border:1px dashed #000;
+}
+
+.columns2{
+	min-height: 0px;
+	
+}
+
+.columns{
+	min-height: 0px;
+	
+}
+
+Header#site-header{
+	margin-bottom:20px;
+	padding:20px;
+	
+}
+
+.wrapper{
+	margin-bottom:20px;
+}
