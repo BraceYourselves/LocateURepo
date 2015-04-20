@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<!-- Gruppe 8, Daniel Kramer, Kirill Kramer, Kirill Kirewa -->
 <html lang="de">
   <head>
    <meta charset="utf-8">
@@ -12,7 +13,7 @@
   <script src="js/vendor/modernizr.js"></script>
     <style>	
       html, body, #map-canvas { 		
-        height: 92%;
+        height: 85%;
         width: 99%;
         margin: 0px;
         padding: 10px;
@@ -29,7 +30,17 @@
         outline: none;
         box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
       }
+	
+		.columns2{
+		min-height: 0px;
+		min-width: 0px;
+		}
 
+		.columns{
+			min-height: 0px;
+			min-width: 0px;
+			
+		}
       #pac-input {						
         background-color: #fff;
         font-family: Roboto;
@@ -39,6 +50,7 @@
        	margin-top: 10px;				
         text-overflow: ellipsis;
         width: 99%;
+		height: 20%;
       }
 
       #pac-input:focus {
@@ -50,6 +62,8 @@
       }
 	  .row {
 		max-width: none;
+		min-height: 0px;
+		min-width: 0px;
 	  }
 
       #type-selector {
@@ -170,7 +184,7 @@ google.maps.event.addDomListener(window, 'load', initialize);
 	</tr>
 	</div>
 
-<div class="small-3 columns"><img src="img/logohhn.png" > </div>
+<div class="small-3 columns"><img src="img/logohhn.png" > </div>					<!--// HHN Logo -->
 		</div>
 
     </div>    
