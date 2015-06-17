@@ -1,0 +1,37 @@
+apply plugin: 'com.android.application'
+
+android {
+    signingConfigs {
+        K_config {
+            keyAlias 'K_key'
+            keyPassword 'kirill98'
+            storeFile file('C:/games/cd/kk.jks')
+            storePassword 'kirill98'
+        }
+    }
+    compileSdkVersion 22
+    buildToolsVersion '22.0.1'
+    defaultConfig {
+        applicationId "com.kulak.locateu_dk"
+        minSdkVersion 15
+        targetSdkVersion 22
+        versionCode 1
+        versionName "1.0"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.K_config
+        }
+        debug {
+            signingConfig signingConfigs.K_config
+        }
+    }
+}
+
+dependencies {
+    compile fileTree(include: ['*.jar'], dir: 'libs')
+    compile 'com.android.support:appcompat-v7:22.2.0'
+    compile 'com.google.android.gms:play-services:7.5.0'
+}
