@@ -1,8 +1,14 @@
 package com.kulak.locateu_dk;
 
+import android.content.Context;
+import android.graphics.Point;
+import android.location.Location;
+import android.location.LocationManager;
 import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
 
+import com.google.android.gms.maps.CameraUpdate;
+import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
@@ -20,7 +26,10 @@ public class LocateU extends FragmentActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_locate_u);
         setUpMapIfNeeded();
-        mMap.setMyLocationEnabled(true);
+
+
+
+
     }
 
     @Override
@@ -65,6 +74,26 @@ public class LocateU extends FragmentActivity {
      * This should only be called once and when we are sure that {@link #mMap} is not null.
      */
     private void setUpMap() {
-        mMap.addMarker(new MarkerOptions().position(new LatLng(0, 0)).title("Marker"));
+
+
+        mMap.setMyLocationEnabled(true); //MyLocation KK
+
+        //First View KK
+        LatLng coordinate = new LatLng(49.186646, 9.497189);
+        CameraUpdate yourLocation = CameraUpdateFactory.newLatLngZoom(coordinate,9);
+        mMap.animateCamera(yourLocation);
+        //------------------------------------------------------------------------------------------
+
+        //Markers KK
+        mMap.addMarker(new MarkerOptions().position(new LatLng(49.12265595842556, 9.206105768680573)).title("Campus Heilbronn Sontheim Y-Bau" + "74081 Heilbronn"));
+        mMap.addMarker(new MarkerOptions().position(new LatLng(49.148336, 9.216587)).title("Campus Heilbronn Am Europaplatz" + "74081 Heilbronn"));
+        mMap.addMarker(new MarkerOptions().position(new LatLng(49.275533, 9.712188)).title("Campus Kuenzelsau ReinholdWuerthHochschule" + "74653 Kuenzelsau"));
+        mMap.addMarker(new MarkerOptions().position(new LatLng(49.112532, 9.743714)).title("Campus Schweabisch Hall" + "74523 Schweabisch Hall"));
+        //------------------------------------------------------------------------------------------
+
+
     }
+
+
+
 }
