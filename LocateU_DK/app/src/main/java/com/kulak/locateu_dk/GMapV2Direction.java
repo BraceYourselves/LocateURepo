@@ -200,6 +200,8 @@ public class GMapV2Direction {
             GMapV2Direction md;
             md = new GMapV2Direction();
 
+        mMap.addMarker(new MarkerOptions().position(start).title("Start"));
+        mMap.addMarker(new MarkerOptions().position(ende).title("End"));
 
 
             Document doc = md.getDocument(start, ende, GMapV2Direction.MODE_DRIVING);
