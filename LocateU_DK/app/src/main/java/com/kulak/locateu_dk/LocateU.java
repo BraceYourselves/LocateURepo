@@ -21,9 +21,10 @@ import android.os.StrictMode;
 
 //----------------------------------------------------------------------------------------------------
 
-public class LocateU extends FragmentActivity {
+public class LocateU extends FragmentActivity implements  GoogleMap.OnMarkerClickListener{
     GoogleMap mMap;
     GMapV2Direction md;
+    private Marker myMarker;
 
 
     @Override
@@ -59,7 +60,10 @@ public class LocateU extends FragmentActivity {
     private void setUpMap() {
 
 
-        mMap.setMyLocationEnabled(true); //MyLocation KK
+        mMap.setOnMarkerClickListener(this);
+
+
+    mMap.setMyLocationEnabled(true); //MyLocation KK
 
         //First View KK
         LatLng coordinate = new LatLng(49.186646, 9.497189);
@@ -68,10 +72,12 @@ public class LocateU extends FragmentActivity {
         //------------------------------------------------------------------------------------------
 
         //Markers KK
-        mMap.addMarker(new MarkerOptions().position(new LatLng(49.12265595842556, 9.206105768680573)).title("Campus Heilbronn Sontheim Y-Bau" + "74081 Heilbronn"));
-        mMap.addMarker(new MarkerOptions().position(new LatLng(49.148336, 9.216587)).title("Campus Heilbronn Am Europaplatz" + "74081 Heilbronn"));
-        mMap.addMarker(new MarkerOptions().position(new LatLng(49.275533, 9.712188)).title("Campus Kuenzelsau ReinholdWuerthHochschule" + "74653 Kuenzelsau"));
-        mMap.addMarker(new MarkerOptions().position(new LatLng(49.112532, 9.743714)).title("Campus Schweabisch Hall" + "74523 Schweabisch Hall"));
+
+            mMap.addMarker(new MarkerOptions().position(new LatLng(49.12265595842556, 9.206105768680573)).title("Campus Heilbronn Sontheim Y-Bau" + "74081 Heilbronn"));
+            mMap.addMarker(new MarkerOptions().position(new LatLng(49.148336, 9.216587)).title("Campus Heilbronn Am Europaplatz" + "74081 Heilbronn"));
+            mMap.addMarker(new MarkerOptions().position(new LatLng(49.275533, 9.712188)).title("Campus Kuenzelsau ReinholdWuerthHochschule" + "74653 Kuenzelsau"));
+            mMap.addMarker(new MarkerOptions().position(new LatLng(49.112532, 9.743714)).title("Campus Schweabisch Hall" + "74523 Schweabisch Hall"));
+
         //------------------------------------------------------------------------------------------
 
 
@@ -85,21 +91,7 @@ public class LocateU extends FragmentActivity {
 
         //------------------------------------------------------------------------------------------
 
-        //Routing KK
 
-
-        if (android.os.Build.VERSION.SDK_INT > 9) {
-            StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
-            StrictMode.setThreadPolicy(policy);
-        }
-        mMap = ((SupportMapFragment)getSupportFragmentManager()
-                .findFragmentById(R.id.map)).getMap();
-
-        LatLng fromPosition = get_curent_position();
-        LatLng toPosition = new LatLng(49.112532, 9.743714);
-        GMapV2Direction.routeberechnen(fromPosition,toPosition,mMap); // routeberechnen in GMapV2Direction KK
-
-        //------------------------------------------------------------------------------------------
 
 
     }
@@ -114,6 +106,32 @@ public class LocateU extends FragmentActivity {
         //------------------------------------------------------------------------------------------
     }
 
+    @Override
+    public boolean onMarkerClick(Marker marker) {
+        mMap.clear();
+        mMap.addMarker(new MarkerOptions().position(new LatLng(49.12265595842556, 9.206105768680573)).title("Campus Heilbronn Sontheim Y-Bau" + "74081 Heilbronn"));
+        mMap.addMarker(new MarkerOptions().position(new LatLng(49.148336, 9.216587)).title("Campus Heilbronn Am Europaplatz" + "74081 Heilbronn"));
+        mMap.addMarker(new MarkerOptions().position(new LatLng(49.275533, 9.712188)).title("Campus Kuenzelsau ReinholdWuerthHochschule" + "74653 Kuenzelsau"));
+        mMap.addMarker(new MarkerOptions().position(new LatLng(49.112532, 9.743714)).title("Campus Schweabisch Hall" + "74523 Schweabisch Hall"));
+
+            //Routing KK
+
+
+            if (android.os.Build.VERSION.SDK_INT > 9) {
+                StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
+                StrictMode.setThreadPolicy(policy);
+            }
+            mMap = ((SupportMapFragment)getSupportFragmentManager()
+                    .findFragmentById(R.id.map)).getMap();
+
+            LatLng fromPosition = get_curent_position();
+            LatLng toPosition = marker.getPosition();
+            GMapV2Direction.routeberechnen(fromPosition,toPosition,mMap); // routeberechnen in GMapV2Direction KK
+
+            //------------------------------------------------------------------------------------------
+
+        return true;
+    }
 }
 
 
