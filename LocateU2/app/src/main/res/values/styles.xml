@@ -1,0 +1,11 @@
+<resources>
+
+    <!-- Base application theme. <item name="colourPrimary">@color/myGray</item> -->
+    <style name="AppTheme" parent="AppTheme.MyBa">
+        <!-- Customize your theme here. -->
+    </style>
+    <style name="AppTheme.MyBa" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="homeAsUpIndicator">@drawable/menu</item>
+
+    </style>
+</resources>
