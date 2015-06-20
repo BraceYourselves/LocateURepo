@@ -69,7 +69,8 @@ public class VivzAdapter extends RecyclerView.Adapter<VivzAdapter.MyViewHolder> 
 
         @Override
         public void onClick(View v) {
-            context.startActivity(new Intent(context,MainActivity.class));
+
+            context.startActivity(new Intent(context,LocateU.class));
 //       int position = getPosition();
 //            if (position == 0){
 //                Log.d("VivZ", " position 0");

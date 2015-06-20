@@ -151,6 +151,9 @@ public class NavigationDrawerFragment extends android.support.v4.app.Fragment {
 //                bread.show();
 
                 // startActivity(new Intent(this, MainActivity.class));
+
+
+
                 Toast.makeText(getActivity(), "Example action.", Toast.LENGTH_SHORT).show();
 
             }

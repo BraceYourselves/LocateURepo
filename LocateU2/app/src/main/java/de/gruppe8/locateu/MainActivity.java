@@ -37,6 +37,7 @@ public class MainActivity extends ActionBarActivity {
         toolbar.setMinimumHeight(300);
 
 
+
         // toolbar.setLogo(R.id.homeMenue);
         //toolbar.setNavigationIcon(R.id.homeMenue);
         // toolbar.setNavigationIcon(getResources().getDrawable(R.id.homeMenue));
