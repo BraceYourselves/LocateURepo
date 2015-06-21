@@ -1,6 +1,7 @@
 package de.gruppe8.locateu;
 
 import android.content.Context;
+import android.content.Intent;
 import android.location.Location;
 import android.location.LocationManager;
 import android.os.Bundle;
@@ -47,20 +48,15 @@ public class LocateU extends FragmentActivity implements  GoogleMap.OnMarkerClic
     private DrawerLayout mDrawerLayout;
     private ImageView btn;
     private Spinner spinner;
-
-    Spinner spinnerOsversions;
-    TextView selVersion;
-    private String[] state = { "Cupcake", "Donut", "Eclair", "Froyo",
-            "Gingerbread", "HoneyComb", "IceCream Sandwich", "Jellybean",
-            "kitkat" };
+    private Context context;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
-       // setContentView(R.layout.activity_locate_u);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_locate_u);
+       // setContentView(R.layout.activity_main);
         setUpMapIfNeeded();
 
         spinner = (Spinner)findViewById(R.id.spinner);
@@ -206,8 +202,15 @@ public class LocateU extends FragmentActivity implements  GoogleMap.OnMarkerClic
 
     @Override
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+
         TextView myText = (TextView) view;
-        Toast.makeText(this, "You Select" + myText.getText(), Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, "You Select" + myText.getText()+"Id = "+id+"long id = ", Toast.LENGTH_SHORT).show();
+        Log.d("VivZ", " LocateU  onItemSelected");
+
+//        LatLng fromPosition = get_curent_position();
+//        LatLng toPosition = marker.getPosition();
+//        GMapV2Direction.routeberechnen(fromPosition, toPosition, mMap); // routeberechnen in GMapV2Direction KK
+
     }
 
     @Override

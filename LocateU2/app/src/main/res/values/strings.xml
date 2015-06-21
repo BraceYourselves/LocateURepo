@@ -10,8 +10,8 @@
 
     <string-array name="Standorte">
         <item>Sontheim</item>
-        <item>Kuenzelssau</item>
         <item>Europaplatz</item>
+        <item>Kuenzelssau</item>
         <item>Schwaebisch_Hall</item>
     </string-array>
 
