@@ -6,6 +6,7 @@ import android.location.LocationManager;
 import android.os.Bundle;
 import android.os.StrictMode;
 import android.support.v4.app.FragmentActivity;
+import android.support.v7.widget.Toolbar;
 
 import com.google.android.gms.maps.CameraUpdate;
 import com.google.android.gms.maps.CameraUpdateFactory;
@@ -24,7 +25,10 @@ import com.google.android.gms.maps.model.MarkerOptions;
 
 public class LocateU extends FragmentActivity implements  GoogleMap.OnMarkerClickListener{
 
-    public LocateU(){}
+//    public LocateU(){}
+
+
+
     GoogleMap mMap;
     GMapV2Direction md;
     private Marker myMarker;
@@ -33,10 +37,10 @@ public class LocateU extends FragmentActivity implements  GoogleMap.OnMarkerClic
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
-
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_locate_u);
         setUpMapIfNeeded();
+
     }
 
     @Override
