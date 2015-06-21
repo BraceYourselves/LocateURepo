@@ -11,8 +11,13 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.Spinner;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.android.gms.maps.CameraUpdate;
 import com.google.android.gms.maps.CameraUpdateFactory;
@@ -29,7 +34,7 @@ import com.google.android.gms.maps.model.MarkerOptions;
 
 //----------------------------------------------------------------------------------------------------
 
-public class LocateU extends FragmentActivity implements  GoogleMap.OnMarkerClickListener{
+public class LocateU extends FragmentActivity implements  GoogleMap.OnMarkerClickListener,AdapterView.OnItemSelectedListener{
 
 //    public LocateU(){}
 
@@ -41,14 +46,32 @@ public class LocateU extends FragmentActivity implements  GoogleMap.OnMarkerClic
     private ImageView img;
     private DrawerLayout mDrawerLayout;
     private ImageView btn;
+    private Spinner spinner;
+
+    Spinner spinnerOsversions;
+    TextView selVersion;
+    private String[] state = { "Cupcake", "Donut", "Eclair", "Froyo",
+            "Gingerbread", "HoneyComb", "IceCream Sandwich", "Jellybean",
+            "kitkat" };
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_locate_u);
+       // setContentView(R.layout.activity_locate_u);
+        setContentView(R.layout.activity_main);
         setUpMapIfNeeded();
+
+        spinner = (Spinner)findViewById(R.id.spinner);
+        ArrayAdapter adapter = ArrayAdapter.createFromResource(this,R.array.Standorte,android.R.layout.simple_spinner_dropdown_item);
+        spinner.setAdapter(adapter);
+
+
+
+
+
+
 
         img = (ImageButton)findViewById(R.id.homeMenue);
 
@@ -74,6 +97,7 @@ public class LocateU extends FragmentActivity implements  GoogleMap.OnMarkerClic
 
 
         });
+
 
     }
 
@@ -173,11 +197,22 @@ public class LocateU extends FragmentActivity implements  GoogleMap.OnMarkerClic
 
             LatLng fromPosition = get_curent_position();
             LatLng toPosition = marker.getPosition();
-            GMapV2Direction.routeberechnen(fromPosition,toPosition,mMap); // routeberechnen in GMapV2Direction KK
+            GMapV2Direction.routeberechnen(fromPosition, toPosition, mMap); // routeberechnen in GMapV2Direction KK
 
             //------------------------------------------------------------------------------------------
 
         return true;
+    }
+
+    @Override
+    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+        TextView myText = (TextView) view;
+        Toast.makeText(this, "You Select" + myText.getText(), Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void onNothingSelected(AdapterView<?> parent) {
+
     }
 }
 

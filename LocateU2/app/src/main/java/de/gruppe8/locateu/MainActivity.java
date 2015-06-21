@@ -23,62 +23,58 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.support.v4.widget.DrawerLayout;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 
-public class MainActivity extends ActionBarActivity {
+public class MainActivity extends ActionBarActivity implements AdapterView.OnItemSelectedListener{
 
     private Toolbar toolbar;
     private ImageButton img;
     private DrawerLayout mDrawerLayout;
     private ImageView btn;
+    private Spinner spinner;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        spinner = (Spinner)findViewById(R.id.spinner);
+        ArrayAdapter adapter = ArrayAdapter.createFromResource(this,R.array.Standorte,android.R.layout.simple_spinner_dropdown_item);
+        spinner.setAdapter(adapter);
+
         toolbar = (Toolbar) findViewById(R.id.appbar);
-        toolbar.setMinimumHeight(300);
 
 
 
-        // toolbar.setLogo(R.id.homeMenue);
-        //toolbar.setNavigationIcon(R.id.homeMenue);
-        // toolbar.setNavigationIcon(getResources().getDrawable(R.id.homeMenue));
+
+
         setSupportActionBar(toolbar);                   // hier wird unsere Toolbar benutzt
 
 
         getSupportActionBar().setDisplayShowTitleEnabled(false);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
 
+        spinner.setAdapter(adapter);
+        spinner.setOnItemSelectedListener(this);
 
-        // getSupportActionBar().setHomeButtonEnabled(true);
-
-
-        //getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        //toolbar.setNavigationIcon(R.drawable.menu);
-
-        //getSupportActionBar().setIcon(R.drawable.logohhn);
-        //getSupportActionBar().setIcon(R.drawable.menu);
-        //getSupportActionBar().setLogo(R.drawable.menu);
-
-
-//        NavigationDrawerFragment drawerFragment = (NavigationDrawerFragment)
-//                getSupportFragmentManager().findFragmentById(R.id.fragment_navigation_drawer);
-//        drawerFragment.setUp((DrawerLayout)findViewById(R.id.drawer_layout),toolbar);
 
         NavigationDrawerFragment drawerFragment = (NavigationDrawerFragment)
                 getSupportFragmentManager().findFragmentById(R.id.fragment_navigation_drawer);
         drawerFragment.setUp(R.id.fragment_navigation_drawer, (DrawerLayout) findViewById(R.id.drawer_layout), toolbar);
 
+
+
+
+
         img = (ImageButton)findViewById(R.id.homeMenue);
-
-
-
 
         final DrawerLayout mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
 
@@ -145,5 +141,16 @@ public class MainActivity extends ActionBarActivity {
         Toast toast = Toast.makeText(MainActivity.this, msg, Toast.LENGTH_LONG);
         toast.setGravity(Gravity.CENTER, toast.getXOffset() / 2, toast.getYOffset() / 2);
         toast.show();
+    }
+
+    @Override
+    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+        TextView myText = (TextView) view;
+        Toast.makeText(this,"You Select"+myText.getText(), Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void onNothingSelected(AdapterView<?> parent) {
+
     }
 }

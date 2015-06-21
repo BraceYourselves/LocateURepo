@@ -15,14 +15,24 @@
             layout="@layout/appbar"></include>
 
 
+        <include
+            android:id="@+id/rad"
+            layout="@layout/ruteberechnen_rad"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_width="fill_parent"
+            android:layout_height="150dp"></include>
 
         <fragment
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="350dp"
             android:layout_below="@+id/appbar"
             android:id="@+id/map"
             tools:context=".LocateU"
             android:name="com.google.android.gms.maps.SupportMapFragment" />
+
+
 
 
     </RelativeLayout>
