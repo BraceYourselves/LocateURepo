@@ -1,3 +1,4 @@
+/*
 package de.gruppe8.locateu;
 
 import android.content.Context;
@@ -222,3 +223,4 @@ public class LocateU extends FragmentActivity implements  GoogleMap.OnMarkerClic
 
 
 
+*/

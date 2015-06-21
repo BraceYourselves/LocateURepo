@@ -260,14 +260,19 @@ public class MainActivity extends ActionBarActivity implements AdapterView.OnIte
 
     @Override
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+//        LatLng currentPosition = get_curent_position();
+//
+        final LatLng target = new LatLng(49.148336, 9.216587);
+        final LatLng currentPosition = new LatLng(49.12265595842556, 9.206105768680573);
 
         TextView myText = (TextView) view;
-        Toast.makeText(this, "You Select" + myText.getText()+"Id = "+id+"long id = ", Toast.LENGTH_SHORT).show();
-        Log.d("VivZ", " LocateU  onItemSelected");
+        Toast.makeText(this, "You Select " + myText.getText()+" Id = "+id+" long id = ", Toast.LENGTH_SHORT).show();
+        Log.d("VivZ", " LocateU  onItemSelected "+id);
 
-//        LatLng fromPosition = get_curent_position();
-//        LatLng toPosition = marker.getPosition();
-//        GMapV2Direction.routeberechnen(fromPosition, toPosition, mMap); // routeberechnen in GMapV2Direction KK
+
+//        mMap = ((SupportMapFragment)getSupportFragmentManager()
+//                .findFragmentById(R.id.map)).getMap();
+//        GMapV2Direction.routeberechnen(currentPosition,target , mMap); // routeberechnen in GMapV2Direction KK
 
     }
 
