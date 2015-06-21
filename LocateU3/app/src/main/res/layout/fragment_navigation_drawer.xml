@@ -1,0 +1,37 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/myGray"
+    tools:context="de.gruppe8.locateu.NavigationDrawerFragment">
+
+    <include
+        android:id="@+id/menueFragment"
+        layout="@layout/menue_bar"></include>
+
+        <LinearLayout
+            android:id="@+id/containerDrawerImage"
+            android:layout_below="@+id/menueFragment"
+    android:layout_width="match_parent"
+           android:layout_height="match_parent"
+
+            android:background="#FFFFFF">
+
+            <ImageView
+                android:layout_width="280dp"
+                android:layout_height="140dp"
+                android:layout_marginBottom="16dp"
+                android:layout_marginTop="@dimen/drawer_margin_top"
+                 />
+        </LinearLayout>
+
+
+<android.support.v7.widget.RecyclerView
+    android:layout_below="@+id/menueFragment"
+android:id="@+id/drawerList"
+android:layout_width="match_parent"
+android:layout_height="wrap_content">
+
+</android.support.v7.widget.RecyclerView></RelativeLayout>
+
+

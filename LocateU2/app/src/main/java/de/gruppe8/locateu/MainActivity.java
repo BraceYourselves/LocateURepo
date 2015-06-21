@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.app.NavUtils;
 import android.support.v4.app.TaskStackBuilder;
+import android.support.v4.view.GravityCompat;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.ActionBar;
 import android.support.v4.app.Fragment;
@@ -14,6 +15,7 @@ import android.content.Context;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -21,12 +23,15 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.support.v4.widget.DrawerLayout;
+import android.widget.ImageButton;
 import android.widget.Toast;
 
 
 public class MainActivity extends ActionBarActivity {
 
     private Toolbar toolbar;
+    private ImageButton img;
+    private DrawerLayout mDrawerLayout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -66,6 +71,25 @@ public class MainActivity extends ActionBarActivity {
         NavigationDrawerFragment drawerFragment = (NavigationDrawerFragment)
                 getSupportFragmentManager().findFragmentById(R.id.fragment_navigation_drawer);
         drawerFragment.setUp(R.id.fragment_navigation_drawer, (DrawerLayout) findViewById(R.id.drawer_layout), toolbar);
+
+        img = (ImageButton)findViewById(R.id.homeMenue);
+
+
+
+
+        final DrawerLayout mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
+
+
+        img.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+
+                Log.d("VivZ", " MainActivity  onClick");
+                mDrawerLayout.openDrawer(GravityCompat.START);
+
+            }
+        });
 
     }
 
