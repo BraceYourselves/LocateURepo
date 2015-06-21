@@ -11,10 +11,11 @@
         android:layout_height="65dp"
         android:layout_gravity="end"
         android:background="@drawable/menu"
-        android:id="@+id/image_hhn"
+        android:id="@+id/close_menue"
         android:clickable="true"
         android:cropToPadding="false"
-        android:paddingRight="20dp" />
+        android:paddingRight="20dp"
+        android:onClick="closeDrawer" />
 
     <TextView
         android:layout_width="wrap_content"

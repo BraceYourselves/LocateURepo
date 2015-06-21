@@ -5,16 +5,20 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.app.Fragment;
+import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.Toast;
 
 import java.util.ArrayList;
@@ -46,6 +50,12 @@ public class NavigationDrawerFragment extends android.support.v4.app.Fragment {
 
     private  boolean mUserLearnedDrawer; // Sichbarkeit des Drawers
     private boolean mFromSavedInstanceState; // Rotation oder erstmaliger Aufruf
+    private ImageButton img;
+
+
+
+
+
     /**
      * Use this factory method to create a new instance of
      * this fragment using the provided parameters.
@@ -66,6 +76,11 @@ public class NavigationDrawerFragment extends android.support.v4.app.Fragment {
 
 
 
+// some more code
+
+    public void myFancyMethod(View v) {
+        // does something very interesting
+    }
 
     public NavigationDrawerFragment() {
         // Required empty public constructor
@@ -80,6 +95,13 @@ public class NavigationDrawerFragment extends android.support.v4.app.Fragment {
                                                                 // wenn null wird es zum ersten Mal ausgefuehrt
                             mFromSavedInstanceState=true;       //
         }
+
+
+
+                Log.d("VivZ", " NavigationDraweFragment  onCreate");
+
+
+
     }
 
     @Override
@@ -135,9 +157,11 @@ public class NavigationDrawerFragment extends android.support.v4.app.Fragment {
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
 
+        Log.d("VivZ", " NavigationDraweFragment  onOptionsItemSelected");
 
         if (mDrawerToggle.onOptionsItemSelected(item)) {
-            if (item.getItemId() ==R.id.homeMenue) {
+
+            if (item.getItemId() ==R.id.close_menue) {
 //                Toast.makeText(this,""+ .getString(R.string.item)).show();
 //                Toast bread = Toast.makeText(this, R.string.item, Toast.LENGTH_LONG);
                 //Toast.makeText(this,getString(R.string.item), Toast.LENGTH_LONG).show();
@@ -147,7 +171,7 @@ public class NavigationDrawerFragment extends android.support.v4.app.Fragment {
 
 
 
-                Toast.makeText(getActivity(), "Example action.", Toast.LENGTH_SHORT).show();
+                Log.d("VivZ", " NavigationDraweFragment onOptionsItemSelected  close_menue");;
 
             }
             return true;
@@ -155,6 +179,7 @@ public class NavigationDrawerFragment extends android.support.v4.app.Fragment {
 
         if (item.getItemId() == R.id.menueFragment) {
             Toast.makeText(getActivity(), "Example action.", Toast.LENGTH_SHORT).show();
+            Log.d("VivZ", " NavigationDraweFragment onOptionsItemSelected  close_menue2");;
             return true;
         }
 

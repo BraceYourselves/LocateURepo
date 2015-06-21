@@ -23,7 +23,9 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.support.v4.widget.DrawerLayout;
+import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 
@@ -32,6 +34,7 @@ public class MainActivity extends ActionBarActivity {
     private Toolbar toolbar;
     private ImageButton img;
     private DrawerLayout mDrawerLayout;
+    private ImageView btn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -91,6 +94,23 @@ public class MainActivity extends ActionBarActivity {
             }
         });
 
+         btn = (ImageView) findViewById(R.id.close_menue);
+
+        btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                closeDrawer(v);
+            }
+
+
+        });
+
+    }
+
+    public void closeDrawer(View v) {
+
+        final DrawerLayout mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
+        mDrawerLayout.closeDrawer(GravityCompat.START);
     }
 
     @Override

@@ -40,6 +40,7 @@ public class LocateU extends FragmentActivity implements  GoogleMap.OnMarkerClic
     private Marker myMarker;
     private ImageView img;
     private DrawerLayout mDrawerLayout;
+    private ImageView btn;
 
 
     @Override
@@ -63,6 +64,23 @@ public class LocateU extends FragmentActivity implements  GoogleMap.OnMarkerClic
             }
         });
 
+        btn = (ImageView) findViewById(R.id.close_menue);
+
+        btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                closeDrawer(v);
+            }
+
+
+        });
+
+    }
+
+    public void closeDrawer(View v) {
+
+        final DrawerLayout mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
+        mDrawerLayout.closeDrawer(GravityCompat.START);
     }
 
     @Override
