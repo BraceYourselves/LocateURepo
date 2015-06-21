@@ -266,7 +266,7 @@ public class MainActivity extends ActionBarActivity implements AdapterView.OnIte
         final LatLng currentPosition = new LatLng(49.12265595842556, 9.206105768680573);
 
         TextView myText = (TextView) view;
-        Toast.makeText(this, "You Select " + myText.getText()+" Id = "+id+" long id = ", Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, "You Select " + myText.getText()+" Id = "+position+" long id = "+id, Toast.LENGTH_SHORT).show();
         Log.d("VivZ", " LocateU  onItemSelected "+id);
 
 
