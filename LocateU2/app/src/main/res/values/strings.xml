@@ -9,6 +9,7 @@
     <string name="title_activity_locate_u">Map</string>
 
     <string-array name="Standorte">
+        <item>Nach</item>
         <item>Sontheim</item>
         <item>Europaplatz</item>
         <item>Kuenzelssau</item>

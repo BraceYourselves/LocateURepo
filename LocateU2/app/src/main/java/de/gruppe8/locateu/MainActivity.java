@@ -186,23 +186,17 @@ public class MainActivity extends ActionBarActivity implements AdapterView.OnIte
 
 
         mMap.setOnMarkerClickListener(this);
-
-
         mMap.setMyLocationEnabled(true); //MyLocation KK
 
         //First View KK
+
         LatLng coordinate = new LatLng(49.186646, 9.497189);
         CameraUpdate yourLocation = CameraUpdateFactory.newLatLngZoom(coordinate, 9);
         mMap.animateCamera(yourLocation);
         //------------------------------------------------------------------------------------------
 
         //Markers KK
-
-        mMap.addMarker(new MarkerOptions().position(new LatLng(49.12265595842556, 9.206105768680573)).title("Campus Heilbronn Sontheim Y-Bau" + "74081 Heilbronn"));
-        mMap.addMarker(new MarkerOptions().position(new LatLng(49.148336, 9.216587)).title("Campus Heilbronn Am Europaplatz" + "74081 Heilbronn"));
-        mMap.addMarker(new MarkerOptions().position(new LatLng(49.275533, 9.712188)).title("Campus Kuenzelsau ReinholdWuerthHochschule" + "74653 Kuenzelsau"));
-        mMap.addMarker(new MarkerOptions().position(new LatLng(49.112532, 9.743714)).title("Campus Schweabisch Hall" + "74523 Schweabisch Hall"));
-
+        getMarkers();
         //------------------------------------------------------------------------------------------
 
 
@@ -230,6 +224,18 @@ public class MainActivity extends ActionBarActivity implements AdapterView.OnIte
         return cposi;
         //------------------------------------------------------------------------------------------
     }
+    //Markers KK
+    public void getMarkers(){
+        mMap.addMarker(new MarkerOptions().position(new LatLng(49.12265595842556, 9.206105768680573)).title("Campus Heilbronn Sontheim Y-Bau" + "74081 Heilbronn"));
+        mMap.addMarker(new MarkerOptions().position(new LatLng(49.148336, 9.216587)).title("Campus Heilbronn Am Europaplatz" + "74081 Heilbronn"));
+        mMap.addMarker(new MarkerOptions().position(new LatLng(49.275533, 9.712188)).title("Campus Kuenzelsau ReinholdWuerthHochschule" + "74653 Kuenzelsau"));
+        mMap.addMarker(new MarkerOptions().position(new LatLng(49.112532, 9.743714)).title("Campus Schweabisch Hall" + "74523 Schweabisch Hall"));
+    }
+    //------------------------------------------------------------------------------------------
+
+
+
+
 
     @Override
     public boolean onMarkerClick(Marker marker) {
@@ -260,20 +266,68 @@ public class MainActivity extends ActionBarActivity implements AdapterView.OnIte
 
     @Override
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-//        LatLng currentPosition = get_curent_position();
-//
-        final LatLng target = new LatLng(49.148336, 9.216587);
-        final LatLng currentPosition = new LatLng(49.12265595842556, 9.206105768680573);
+        StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
+        StrictMode.setThreadPolicy(policy);
 
-        TextView myText = (TextView) view;
-        Toast.makeText(this, "You Select " + myText.getText()+" Id = "+position+" long id = "+id, Toast.LENGTH_SHORT).show();
-        Log.d("VivZ", " LocateU  onItemSelected "+id);
+        try {
+            mMap = ((SupportMapFragment) getSupportFragmentManager()
+                    .findFragmentById(R.id.map)).getMap();
 
 
-//        mMap = ((SupportMapFragment)getSupportFragmentManager()
-//                .findFragmentById(R.id.map)).getMap();
-//        GMapV2Direction.routeberechnen(currentPosition,target , mMap); // routeberechnen in GMapV2Direction KK
+            if (position == 4) {
+                LatLng coordinate = new LatLng(49.186646, 9.497189);
+                CameraUpdate yourLocation = CameraUpdateFactory.newLatLngZoom(coordinate, 9);
+                mMap.animateCamera(yourLocation);
+                mMap.clear();
+                LatLng currentPosition = get_curent_position();
+                LatLng target = new LatLng(49.112532, 9.743714);
+                GMapV2Direction.routeberechnen(currentPosition, target, mMap); // routeberechnen in GMapV2Direction KK
+            }else if (position == 3) {
+                LatLng coordinate = new LatLng(49.186646, 9.497189);
+                CameraUpdate yourLocation = CameraUpdateFactory.newLatLngZoom(coordinate, 9);
+                mMap.animateCamera(yourLocation);
+                mMap.clear();
+                LatLng currentPosition = get_curent_position();
+                LatLng target = new LatLng(49.275533, 9.712188);
+                GMapV2Direction.routeberechnen(currentPosition, target, mMap); // routeberechnen in GMapV2Direction KK
+                TextView myText = (TextView) view;
+            }else if (position == 2) {
 
+                CameraUpdate yourLocation = CameraUpdateFactory.newLatLngZoom(get_curent_position(), 13);
+                mMap.animateCamera(yourLocation);
+
+                mMap.clear();
+                LatLng currentPosition = get_curent_position();
+                LatLng target = new LatLng(49.148336, 9.216587);
+                GMapV2Direction.routeberechnen(currentPosition, target, mMap); // routeberechnen in GMapV2Direction KK
+
+            } else if (position == 1) {
+                CameraUpdate yourLocation = CameraUpdateFactory.newLatLngZoom(get_curent_position(), 12);
+                mMap.animateCamera(yourLocation);
+            mMap.clear();
+            LatLng currentPosition = get_curent_position();
+            LatLng target = new LatLng(49.12265595842556, 9.206105768680573);
+            GMapV2Direction.routeberechnen(currentPosition, target, mMap); // routeberechnen in GMapV2Direction KK
+
+        }else if (position == 0) {
+                CameraUpdate yourLocation = CameraUpdateFactory.newLatLngZoom(get_curent_position(), 8);
+                mMap.animateCamera(yourLocation);
+                mMap.clear();
+                getMarkers();
+
+            }
+
+
+            else{
+                TextView myText = (TextView) view;
+                Toast.makeText(this, "You Select " + myText.getText() + " Id = " + position + " long id = " + id, Toast.LENGTH_SHORT).show();
+                Log.d("VivZ", " LocateU  onItemSelected " + id);
+            }
+        } catch (Exception e) {
+            Log.d("Fehler", e.getMessage());
+
+
+        }
     }
 
     @Override
