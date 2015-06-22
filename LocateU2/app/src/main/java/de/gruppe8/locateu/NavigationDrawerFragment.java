@@ -2,22 +2,23 @@ package de.gruppe8.locateu;
 
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.app.Fragment;
-import android.support.v4.view.GravityCompat;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
-import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.ImageButton;
 import android.widget.Toast;
 
@@ -30,7 +31,7 @@ import java.util.List;
  * Use the {@link NavigationDrawerFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class NavigationDrawerFragment extends android.support.v4.app.Fragment {
+public class NavigationDrawerFragment extends Fragment implements VivzAdapter.ClickListener {
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -51,9 +52,7 @@ public class NavigationDrawerFragment extends android.support.v4.app.Fragment {
     private  boolean mUserLearnedDrawer; // Sichbarkeit des Drawers
     private boolean mFromSavedInstanceState; // Rotation oder erstmaliger Aufruf
     private ImageButton img;
-
-
-
+    private Context context;
 
 
     /**
@@ -106,6 +105,7 @@ public class NavigationDrawerFragment extends android.support.v4.app.Fragment {
         View layout=inflater.inflate(R.layout.fragment_navigation_drawer, container, false);
                 recyclerView= (RecyclerView) layout.findViewById(R.id.drawerList);
                adapter = new VivzAdapter(getActivity(),getData());
+                adapter.setClickListener(this);
                 recyclerView.setAdapter(adapter);
                 recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
                 return layout;
@@ -193,4 +193,48 @@ public class NavigationDrawerFragment extends android.support.v4.app.Fragment {
                 SharedPreferences sharedPreferences = context.getSharedPreferences(PREF_FILE_NAME, Context.MODE_PRIVATE);
                 return sharedPreferences.getString(preferenceName,defaultValue);
             }
+
+    @Override
+    public void itemClicked(View view, int position) {
+
+
+
+
+            if (position == 0){
+                Log.d("VivZ", " position 0");
+                startActivity(new Intent(getActivity(), MainActivity.class));
+
+
+            }
+            else if (position == 1){
+                Log.d("VivZ"," position 1");
+
+            }
+
+//        Fragment nextFrag = new Fragment();
+//        newFragment newFragment = new newFragment();
+
+//       android.support.v4.app.Fragment newFragment = new android.support.v4.app.Fragment();
+
+//        this.getFragmentManager().beginTransaction()
+//                .add(R.id.main_layout, newFragment)
+//                .addToBackStack(null)
+//                .commit();
+
+
+//        // Create new fragment and transaction
+////        newFragment newFragment = new newFragment();
+//        FragmentTransaction transaction = getFragmentManager().beginTransaction();
+//
+//// Replace whatever is in the fragment_container view with this fragment,
+//// and add the transaction to the back stack
+//        transaction.replace(R.id.main_layout, newFragment);
+//        transaction.addToBackStack(null);
+//
+//// Commit the transaction
+//        transaction.commit();
+
+
+        Log.d("VivZ", " NavigationDraweFragment itemClicked position: "+position);
+    }
 }

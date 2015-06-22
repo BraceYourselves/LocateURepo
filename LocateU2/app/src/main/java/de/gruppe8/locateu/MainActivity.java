@@ -1,36 +1,25 @@
 package de.gruppe8.locateu;
 
 
-import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.location.Location;
 import android.location.LocationManager;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
-import android.os.StrictMode;
-import android.support.v4.app.FragmentTransaction;
-import android.support.v4.app.NavUtils;
-import android.support.v4.app.TaskStackBuilder;
-import android.support.v4.view.GravityCompat;
-import android.support.v7.app.ActionBarActivity;
-import android.support.v7.app.ActionBar;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
-import android.content.Context;
-import android.os.Build;
 import android.os.Bundle;
+import android.os.StrictMode;
+import android.support.v4.view.GravityCompat;
+import android.support.v4.widget.DrawerLayout;
+import android.support.v7.app.ActionBarActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.Gravity;
-import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.ViewGroup;
-import android.support.v4.widget.DrawerLayout;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.Spinner;
@@ -46,7 +35,7 @@ import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 
 
-public class MainActivity extends ActionBarActivity implements AdapterView.OnItemSelectedListener,GoogleMap.OnMarkerClickListener{
+public class MainActivity extends ActionBarActivity  implements AdapterView.OnItemSelectedListener,GoogleMap.OnMarkerClickListener{
 
     private Toolbar toolbar;
     private ImageButton img;
@@ -85,7 +74,7 @@ public class MainActivity extends ActionBarActivity implements AdapterView.OnIte
 
         NavigationDrawerFragment drawerFragment = (NavigationDrawerFragment)
                 getSupportFragmentManager().findFragmentById(R.id.fragment_navigation_drawer);
-        drawerFragment.setUp(R.id.fragment_navigation_drawer, (DrawerLayout) findViewById(R.id.drawer_layout), toolbar);
+        drawerFragment.setUp(R.id.fragment_navigation_drawer, (DrawerLayout) findViewById(R.id.main_layout), toolbar);
 
 
 
@@ -93,7 +82,7 @@ public class MainActivity extends ActionBarActivity implements AdapterView.OnIte
 
         img = (ImageButton)findViewById(R.id.homeMenue);
 
-        final DrawerLayout mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
+        final DrawerLayout mDrawerLayout = (DrawerLayout) findViewById(R.id.main_layout);
 
         // Beim klicken öffnet sich der NavigationDrawe
         img.setOnClickListener(new View.OnClickListener() {
@@ -161,7 +150,7 @@ public class MainActivity extends ActionBarActivity implements AdapterView.OnIte
 
     public void closeDrawer(View v) {
 
-        final DrawerLayout mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
+        final DrawerLayout mDrawerLayout = (DrawerLayout) findViewById(R.id.main_layout);
         mDrawerLayout.closeDrawer(GravityCompat.START);
     }
 

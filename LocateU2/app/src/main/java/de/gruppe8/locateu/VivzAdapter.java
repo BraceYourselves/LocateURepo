@@ -23,10 +23,11 @@ public class VivzAdapter extends RecyclerView.Adapter<VivzAdapter.MyViewHolder> 
     private  LayoutInflater inflater;
     List<Information> data = Collections.emptyList();
     private Context context;
+    private ClickListener clickListener;
 
     public VivzAdapter(Context context, List<Information> data){
         this.context = context;
-       inflater = LayoutInflater.from(context);
+        inflater = LayoutInflater.from(context);
         this.data = data;
     }
 
@@ -70,18 +71,31 @@ public class VivzAdapter extends RecyclerView.Adapter<VivzAdapter.MyViewHolder> 
         @Override
         public void onClick(View v) {
 
-
-       int position = getPosition();
-            if (position == 0){
-                Log.d("VivZ", " position 0");
-                context.startActivity(new Intent(context, MainActivity.class));
-
-
+            if (clickListener!=null){
+                clickListener.itemClicked(v,getPosition());
             }
-            if (position == 1){
-                Log.d("VivZ"," position 1");
 
-            }
+//       int position = getPosition();
+//            if (position == 0){
+//                Log.d("VivZ", " position 0");
+//                context.startActivity(new Intent(context, MainActivity.class));
+//
+//
+//            }
+//            if (position == 1){
+//                Log.d("VivZ"," position 1");
+//
+//            }
         }
     }
+
+    public void setClickListener(ClickListener clickListener){
+        this.clickListener = clickListener;
+    }
+
+    public interface ClickListener{
+        public void itemClicked(View view,int position);
+    }
+
+
 }
