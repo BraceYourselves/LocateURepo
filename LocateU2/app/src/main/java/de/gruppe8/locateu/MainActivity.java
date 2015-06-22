@@ -70,7 +70,7 @@ public class MainActivity extends ActionBarActivity implements AdapterView.OnIte
         spinner.setAdapter(adapter);
         spinner.setAdapter(adapter);
         spinner.setOnItemSelectedListener(this);
-
+        gps_enabled();
 
 
         setSupportActionBar(toolbar);                   // hier wird unsere Toolbar benutzt
@@ -212,12 +212,20 @@ public class MainActivity extends ActionBarActivity implements AdapterView.OnIte
 
         //------------------------------------------------------------------------------------------
 
-
-
-
     }
+//    show u if gps is not enabled KK
+    public void gps_enabled(){
+        LocationManager locationManager = (LocationManager) this.getSystemService(Context.LOCATION_SERVICE);
+        if (locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER)){
+
+        }else{
+            Toast.makeText(this, "You have GPS not Enabled", Toast.LENGTH_LONG).show();
+        }
+    }
+    //------------------------------------------------------------------------------------------
     // get curent Position KK
     public LatLng get_curent_position() {
+        gps_enabled();
         LocationManager lm = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
         Location location = lm.getLastKnownLocation(LocationManager.GPS_PROVIDER);
         double current_longitude = location.getLongitude();
@@ -268,6 +276,7 @@ public class MainActivity extends ActionBarActivity implements AdapterView.OnIte
 
     @Override
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+
         StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
         StrictMode.setThreadPolicy(policy);
 
