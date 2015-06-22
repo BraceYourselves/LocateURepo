@@ -5,6 +5,8 @@ import android.app.Activity;
 import android.content.Intent;
 import android.location.Location;
 import android.location.LocationManager;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.StrictMode;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.app.NavUtils;
@@ -70,7 +72,7 @@ public class MainActivity extends ActionBarActivity implements AdapterView.OnIte
         spinner.setAdapter(adapter);
         spinner.setAdapter(adapter);
         spinner.setOnItemSelectedListener(this);
-        gps_enabled();
+        gps_wifi_enabled();
 
 
         setSupportActionBar(toolbar);                   // hier wird unsere Toolbar benutzt
@@ -213,19 +215,30 @@ public class MainActivity extends ActionBarActivity implements AdapterView.OnIte
         //------------------------------------------------------------------------------------------
 
     }
-//    show u if gps is not enabled KK
-    public void gps_enabled(){
+//    show u if gps or wifi is not enabled KK
+    public void gps_wifi_enabled(){
         LocationManager locationManager = (LocationManager) this.getSystemService(Context.LOCATION_SERVICE);
+
         if (locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER)){
 
         }else{
             Toast.makeText(this, "You have GPS not Enabled", Toast.LENGTH_LONG).show();
         }
+
+        ConnectivityManager connManager = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo mWifi = connManager.getNetworkInfo(ConnectivityManager.TYPE_WIFI);
+
+        if (mWifi.isConnected()) {
+            // Do whatever
+        }else{
+            Toast.makeText(this, "You have Wifi not Enabled", Toast.LENGTH_LONG).show();
+        }
+
     }
     //------------------------------------------------------------------------------------------
     // get curent Position KK
     public LatLng get_curent_position() {
-        gps_enabled();
+        gps_wifi_enabled();
         LocationManager lm = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
         Location location = lm.getLastKnownLocation(LocationManager.GPS_PROVIDER);
         double current_longitude = location.getLongitude();
@@ -244,11 +257,9 @@ public class MainActivity extends ActionBarActivity implements AdapterView.OnIte
     //------------------------------------------------------------------------------------------
 
 
-
-
-
     @Override
     public boolean onMarkerClick(Marker marker) {
+        gps_wifi_enabled();
         mMap.clear();
         mMap.addMarker(new MarkerOptions().position(new LatLng(49.12265595842556, 9.206105768680573)).title("Campus Heilbronn Sontheim Y-Bau" + "74081 Heilbronn"));
         mMap.addMarker(new MarkerOptions().position(new LatLng(49.148336, 9.216587)).title("Campus Heilbronn Am Europaplatz" + "74081 Heilbronn"));
