@@ -1,5 +1,9 @@
 package de.gruppe8.locateu;
 
+/**
+ Gruppe 8
+ Daniel Kramer 187239 & Kirill Kramer 187240
+ */
 
 import android.app.Activity;
 import android.content.Context;
@@ -61,20 +65,20 @@ public class MainActivity extends ActionBarActivity  implements AdapterView.OnIt
         setUpMapIfNeeded();
 
 
-        toolbar = (Toolbar) findViewById(R.id.appbar);
+
         spinner = (Spinner)findViewById(R.id.spinner);
         ArrayAdapter adapter = ArrayAdapter.createFromResource(this,R.array.Standorte,android.R.layout.simple_spinner_dropdown_item);
         spinner.setAdapter(adapter);
-        spinner.setAdapter(adapter);
+
         spinner.setOnItemSelectedListener(this);
         gps_wifi_enabled();
 
-
+        toolbar = (Toolbar) findViewById(R.id.appbar);
         setSupportActionBar(toolbar);                   // hier wird unsere Toolbar benutzt
 
 
         getSupportActionBar().setDisplayShowTitleEnabled(false);
-        getSupportActionBar().setDisplayShowHomeEnabled(true);
+        getSupportActionBar().setDisplayShowHomeEnabled(false);
 
 
 
@@ -378,7 +382,7 @@ public class MainActivity extends ActionBarActivity  implements AdapterView.OnIt
             else{
                 TextView myText = (TextView) view;
                 Toast.makeText(this, "You Select " + myText.getText() + " Id = " + position + " long id = " + id, Toast.LENGTH_SHORT).show();
-                Log.d("VivZ", " LocateU  onItemSelected " + id);
+
             }
         } catch (Exception e) {
             Log.d("Fehler", e.getMessage());

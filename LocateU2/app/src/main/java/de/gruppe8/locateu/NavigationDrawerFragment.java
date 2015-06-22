@@ -1,5 +1,8 @@
 package de.gruppe8.locateu;
-
+/**
+ Gruppe 8
+ Daniel Kramer 187239& Kirill Kramer 187240
+ */
 
 import android.content.Context;
 import android.content.Intent;
@@ -27,9 +30,8 @@ import java.util.List;
 
 
 /**
- * A simple {@link android.support.v4.app.Fragment} subclass.
- * Use the {@link NavigationDrawerFragment#newInstance} factory method to
- * create an instance of this fragment.
+Gruppe 8
+ Daniel Kramer 187239& Kirill Kramer 187240
  */
 public class NavigationDrawerFragment extends Fragment implements VivzAdapter.ClickListener {
     // TODO: Rename parameter arguments, choose names that match
@@ -152,31 +154,7 @@ public class NavigationDrawerFragment extends Fragment implements VivzAdapter.Cl
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
 
-        Log.d("VivZ", " NavigationDraweFragment  onOptionsItemSelected");
 
-        if (mDrawerToggle.onOptionsItemSelected(item)) {
-
-            if (item.getItemId() ==R.id.close_menue) {
-//                Toast.makeText(this,""+ .getString(R.string.item)).show();
-//                Toast bread = Toast.makeText(this, R.string.item, Toast.LENGTH_LONG);
-                //Toast.makeText(this,getString(R.string.item), Toast.LENGTH_LONG).show();
-//                bread.show();
-
-                // startActivity(new Intent(this, MainActivity.class));
-
-
-
-                Log.d("VivZ", " NavigationDraweFragment onOptionsItemSelected  close_menue");;
-
-            }
-            return true;
-        }
-
-        if (item.getItemId() == R.id.menueFragment) {
-            Toast.makeText(getActivity(), "Example action.", Toast.LENGTH_SHORT).show();
-            Log.d("VivZ", " NavigationDraweFragment onOptionsItemSelected  close_menue2");;
-            return true;
-        }
 
         return super.onOptionsItemSelected(item);
     }
@@ -201,40 +179,18 @@ public class NavigationDrawerFragment extends Fragment implements VivzAdapter.Cl
 
 
             if (position == 0){
-                Log.d("VivZ", " position 0");
+
                 startActivity(new Intent(getActivity(), MainActivity.class));
 
 
             }
             else if (position == 1){
-                Log.d("VivZ"," position 1");
+
 
             }
 
-//        Fragment nextFrag = new Fragment();
-//        newFragment newFragment = new newFragment();
-
-//       android.support.v4.app.Fragment newFragment = new android.support.v4.app.Fragment();
-
-//        this.getFragmentManager().beginTransaction()
-//                .add(R.id.main_layout, newFragment)
-//                .addToBackStack(null)
-//                .commit();
 
 
-//        // Create new fragment and transaction
-////        newFragment newFragment = new newFragment();
-//        FragmentTransaction transaction = getFragmentManager().beginTransaction();
-//
-//// Replace whatever is in the fragment_container view with this fragment,
-//// and add the transaction to the back stack
-//        transaction.replace(R.id.main_layout, newFragment);
-//        transaction.addToBackStack(null);
-//
-//// Commit the transaction
-//        transaction.commit();
 
-
-        Log.d("VivZ", " NavigationDraweFragment itemClicked position: "+position);
     }
 }
