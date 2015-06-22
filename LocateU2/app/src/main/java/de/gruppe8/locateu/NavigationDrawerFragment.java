@@ -76,11 +76,6 @@ public class NavigationDrawerFragment extends android.support.v4.app.Fragment {
 
 
 
-// some more code
-
-    public void myFancyMethod(View v) {
-        // does something very interesting
-    }
 
     public NavigationDrawerFragment() {
         // Required empty public constructor

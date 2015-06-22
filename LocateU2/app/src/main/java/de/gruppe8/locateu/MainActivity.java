@@ -87,13 +87,13 @@ public class MainActivity extends ActionBarActivity implements AdapterView.OnIte
 
 
 
-
+        //Generierung eines klickbaren homeButton
 
         img = (ImageButton)findViewById(R.id.homeMenue);
 
         final DrawerLayout mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
 
-
+        // Beim klicken öffnet sich der NavigationDrawe
         img.setOnClickListener(new View.OnClickListener() {
 
             @Override
@@ -105,8 +105,10 @@ public class MainActivity extends ActionBarActivity implements AdapterView.OnIte
             }
         });
 
+        ////Generierung eines klickbaren closeButon
          btn = (ImageView) findViewById(R.id.close_menue);
 
+        // Beim klicken schließt sich der NavigationDrawe
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

@@ -80,6 +80,7 @@ public class VivzAdapter extends RecyclerView.Adapter<VivzAdapter.MyViewHolder> 
             }
             if (position == 1){
                 Log.d("VivZ"," position 1");
+
             }
         }
     }
