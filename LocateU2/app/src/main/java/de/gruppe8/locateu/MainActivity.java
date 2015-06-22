@@ -24,6 +24,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.RadioButton;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -48,6 +49,7 @@ public class MainActivity extends ActionBarActivity  implements AdapterView.OnIt
     GMapV2Direction md;
     private Marker myMarker;
     Button button;
+    Button  button2;
 
 
 
@@ -214,6 +216,7 @@ public class MainActivity extends ActionBarActivity  implements AdapterView.OnIt
     public void btnClick() {
         Toast.makeText(this, "You have Button Enabled", Toast.LENGTH_LONG).show();
         button = (Button) findViewById(R.id.s_exit);
+
         button.setOnClickListener(new View.OnClickListener()
         {
             @Override
@@ -221,8 +224,28 @@ public class MainActivity extends ActionBarActivity  implements AdapterView.OnIt
             System.exit(0);
             }
         });
-    }
 
+    }
+    //------------------------------------------------------------------------------------------
+// map clear
+    public void btnClickrefresh() {
+
+
+        button2 = (Button) findViewById(R.id.c_butt);
+        button2.setVisibility(View.VISIBLE);
+        button2.setOnClickListener(new View.OnClickListener()
+
+        {
+            @Override
+            public void onClick(View arg0) {
+                button2.setVisibility(View.INVISIBLE);
+                mMap.clear();
+                getMarkers();
+
+            }
+        });
+    }
+    //------------------------------------------------------------------------------------------
 
 //    show u if gps or wifi is not enabled KK
     public void gps_wifi_enabled(){
@@ -268,6 +291,7 @@ public class MainActivity extends ActionBarActivity  implements AdapterView.OnIt
 
     @Override
     public boolean onMarkerClick(Marker marker) {
+
         gps_wifi_enabled();
         mMap.clear();
         mMap.addMarker(new MarkerOptions().position(new LatLng(49.12265595842556, 9.206105768680573)).title("Campus Heilbronn Sontheim Y-Bau" + "74081 Heilbronn"));
@@ -284,6 +308,8 @@ public class MainActivity extends ActionBarActivity  implements AdapterView.OnIt
         }
         mMap = ((SupportMapFragment)getSupportFragmentManager()
                 .findFragmentById(R.id.map)).getMap();
+
+          btnClickrefresh(); // set cancel button visible and do mMap.cear()
 
         LatLng fromPosition = get_curent_position();
         LatLng toPosition = marker.getPosition();

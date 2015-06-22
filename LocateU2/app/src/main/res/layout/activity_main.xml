@@ -38,12 +38,23 @@
             android:layout_height="wrap_content"
             android:text="Exit"
             android:id="@+id/s_exit"
-            android:layout_alignBottom="@+id/map"
             android:clickable="true"
             android:gravity="bottom|right"
-            android:layout_alignTop="@+id/rad"
+            android:layout_alignBottom="@+id/map"
             android:layout_alignParentRight="true"
-            android:layout_alignParentEnd="true" />
+            android:layout_alignParentEnd="true"
+            android:layout_alignTop="@+id/rad" />
+
+        <Button
+            style="?android:attr/buttonStyleSmall"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="cancel"
+            android:id="@+id/c_butt"
+            android:layout_below="@+id/appbar"
+            android:layout_centerHorizontal="true"
+            android:clickable="true"
+            android:visibility="invisible" />
 
 
     </RelativeLayout>
