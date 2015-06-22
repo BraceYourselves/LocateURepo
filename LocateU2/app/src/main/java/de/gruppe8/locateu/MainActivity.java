@@ -218,7 +218,7 @@ public class MainActivity extends ActionBarActivity  implements AdapterView.OnIt
     }
     // ini Button
     public void btnClick() {
-        Toast.makeText(this, "You have Button Enabled", Toast.LENGTH_LONG).show();
+
         button = (Button) findViewById(R.id.s_exit);
 
         button.setOnClickListener(new View.OnClickListener()
@@ -303,7 +303,7 @@ public class MainActivity extends ActionBarActivity  implements AdapterView.OnIt
         mMap.addMarker(new MarkerOptions().position(new LatLng(49.275533, 9.712188)).title("Campus Kuenzelsau ReinholdWuerthHochschule" + "74653 Kuenzelsau"));
         mMap.addMarker(new MarkerOptions().position(new LatLng(49.112532, 9.743714)).title("Campus Schweabisch Hall" + "74523 Schweabisch Hall"));
 
-        //Routing KK
+        //Routing ini KK
 
 
         if (android.os.Build.VERSION.SDK_INT > 9) {
@@ -343,6 +343,9 @@ public class MainActivity extends ActionBarActivity  implements AdapterView.OnIt
                 LatLng currentPosition = get_curent_position();
                 LatLng target = new LatLng(49.112532, 9.743714);
                 GMapV2Direction.routeberechnen(currentPosition, target, mMap); // routeberechnen in GMapV2Direction KK
+
+                btnClickrefresh(); // set cancel button visible and do mMap.cear()
+
             }else if (position == 3) {
                 LatLng coordinate = new LatLng(49.186646, 9.497189);
                 CameraUpdate yourLocation = CameraUpdateFactory.newLatLngZoom(coordinate, 9);
@@ -352,6 +355,8 @@ public class MainActivity extends ActionBarActivity  implements AdapterView.OnIt
                 LatLng target = new LatLng(49.275533, 9.712188);
                 GMapV2Direction.routeberechnen(currentPosition, target, mMap); // routeberechnen in GMapV2Direction KK
                 TextView myText = (TextView) view;
+                btnClickrefresh(); // set cancel button visible and do mMap.cear()
+
             }else if (position == 2) {
 
                 CameraUpdate yourLocation = CameraUpdateFactory.newLatLngZoom(get_curent_position(), 13);
@@ -361,16 +366,20 @@ public class MainActivity extends ActionBarActivity  implements AdapterView.OnIt
                 LatLng currentPosition = get_curent_position();
                 LatLng target = new LatLng(49.148336, 9.216587);
                 GMapV2Direction.routeberechnen(currentPosition, target, mMap); // routeberechnen in GMapV2Direction KK
+                btnClickrefresh(); // set cancel button visible and do mMap.cear()
+
 
             } else if (position == 1) {
                 CameraUpdate yourLocation = CameraUpdateFactory.newLatLngZoom(get_curent_position(), 12);
                 mMap.animateCamera(yourLocation);
-            mMap.clear();
-            LatLng currentPosition = get_curent_position();
-            LatLng target = new LatLng(49.12265595842556, 9.206105768680573);
-            GMapV2Direction.routeberechnen(currentPosition, target, mMap); // routeberechnen in GMapV2Direction KK
+                mMap.clear();
+                LatLng currentPosition = get_curent_position();
+                LatLng target = new LatLng(49.12265595842556, 9.206105768680573);
+                GMapV2Direction.routeberechnen(currentPosition, target, mMap); // routeberechnen in GMapV2Direction KK
+                btnClickrefresh(); // set cancel button visible and do mMap.cear()
 
-        }else if (position == 0) {
+
+            }else if (position == 0) {
                 CameraUpdate yourLocation = CameraUpdateFactory.newLatLngZoom(get_curent_position(), 8);
                 mMap.animateCamera(yourLocation);
                 mMap.clear();
