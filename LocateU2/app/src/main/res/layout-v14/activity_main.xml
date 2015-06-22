@@ -32,18 +32,18 @@
             tools:context=".LocateU"
             android:name="com.google.android.gms.maps.SupportMapFragment" />
 
-        <Button
-            style="?android:attr/buttonStyleSmall"
+        <Switch
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Exit"
             android:id="@+id/s_exit"
             android:layout_alignBottom="@+id/map"
-            android:clickable="true"
-            android:gravity="bottom|right"
-            android:layout_alignTop="@+id/rad"
             android:layout_alignParentRight="true"
-            android:layout_alignParentEnd="true" />
+            android:layout_alignParentEnd="true"
+            android:clickable="true"
+            android:singleLine="false"
+            android:enabled="false"
+            android:checked="false" />
 
 
     </RelativeLayout>

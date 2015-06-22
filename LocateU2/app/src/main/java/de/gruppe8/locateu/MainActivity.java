@@ -1,6 +1,7 @@
 package de.gruppe8.locateu;
 
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.location.Location;
@@ -20,6 +21,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.Spinner;
@@ -45,17 +47,19 @@ public class MainActivity extends ActionBarActivity  implements AdapterView.OnIt
     GoogleMap mMap;
     GMapV2Direction md;
     private Marker myMarker;
+    Button button;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         setUpMapIfNeeded();
 
 
         toolbar = (Toolbar) findViewById(R.id.appbar);
-
-
         spinner = (Spinner)findViewById(R.id.spinner);
         ArrayAdapter adapter = ArrayAdapter.createFromResource(this,R.array.Standorte,android.R.layout.simple_spinner_dropdown_item);
         spinner.setAdapter(adapter);
@@ -108,6 +112,8 @@ public class MainActivity extends ActionBarActivity  implements AdapterView.OnIt
 
 
         });
+
+        btnClick();
 
     }
 
@@ -204,6 +210,20 @@ public class MainActivity extends ActionBarActivity  implements AdapterView.OnIt
         //------------------------------------------------------------------------------------------
 
     }
+    // ini Button
+    public void btnClick() {
+        Toast.makeText(this, "You have Button Enabled", Toast.LENGTH_LONG).show();
+        button = (Button) findViewById(R.id.s_exit);
+        button.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View arg0) {
+            System.exit(0);
+            }
+        });
+    }
+
+
 //    show u if gps or wifi is not enabled KK
     public void gps_wifi_enabled(){
         LocationManager locationManager = (LocationManager) this.getSystemService(Context.LOCATION_SERVICE);
