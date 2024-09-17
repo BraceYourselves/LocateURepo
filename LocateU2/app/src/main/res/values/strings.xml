@@ -1,0 +1,21 @@
+<resources>
+    <string name="app_name">LocateU</string>
+
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+    <string name="next">Next</string>
+    <string name="drawer_open">Open</string>
+    <string name="drawer_close">Close</string>
+    <string name="title_activity_locate_u">Map</string>
+
+    <string-array name="Standorte">
+        <item>Nach</item>
+        <item>Sontheim</item>
+        <item>Europaplatz</item>
+        <item>Kuenzelssau</item>
+        <item>Schwaebisch_Hall</item>
+    </string-array>
+
+<!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+</resources>
